@@ -1,0 +1,139 @@
+package Modelo;
+
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+
+public class ModeloTabla {
+
+    private static final String[] COLUMNAS = {
+        "D.A.", "P.EDUCATIVO", "LETRA", "PROFESOR", "MATERIA",
+        "Periodo", "No.ACTA", "MATRICULA", "ALUMNO",
+        "CALIFICACION", "OP.INS.", "OP.EXA.", "MES", "CICLO ESCOLAR"
+    };
+
+    public static final int COL_DA        = 0;
+    public static final int COL_CARRERA   = 1;
+    public static final int COL_GRUPO     = 2;
+    public static final int COL_PROFESOR  = 3;
+    public static final int COL_MATERIA   = 4;
+    public static final int COL_PERIODO   = 5;
+    public static final int COL_ACTA      = 6;
+    public static final int COL_MATRICULA = 7;
+    public static final int COL_ALUMNO    = 8;
+    public static final int COL_CALIF     = 9;
+    public static final int COL_OPINS     = 10;
+    public static final int COL_OPEXA     = 11;
+    public static final int COL_MES       = 12;
+    public static final int COL_CICLO     = 13;
+
+    private final ArrayList<String[]> datos;
+
+    public ModeloTabla(ArrayList<String[]> datos) {
+        this.datos = datos;
+    }
+
+    private ArrayList<Carreras> getCarreras() {
+        ListaObjetos lista = new ListaObjetos();
+        for (String[] fila : datos) {
+            if (fila.length <= COL_CARRERA) continue;
+            Carreras c = new Carreras();
+            c.setCarrera(fila[COL_CARRERA].trim());
+            lista.Insertar(c);
+        }
+        return lista.getLista();
+    }
+
+    public DefaultListModel<Carreras> getModeloCarreras() {
+        DefaultListModel<Carreras> m = new DefaultListModel<>();
+        for (Object o : getCarreras()) m.addElement((Carreras) o);
+        return m;
+    }
+
+    private ArrayList<Materias> getMaterias(Carreras carrera) {
+        ListaObjetos lista = new ListaObjetos();
+        for (String[] fila : datos) {
+            if (fila.length <= COL_MATERIA) continue;
+            if (!fila[COL_CARRERA].trim().equals(carrera.getCarrera())) continue;
+            lista.Insertar(new Materias(fila[COL_MATERIA].trim(), fila[COL_CARRERA].trim()));
+        }
+        return lista.getLista();
+    }
+
+    public DefaultListModel<Materias> getModeloMaterias(Carreras carrera) {
+        DefaultListModel<Materias> m = new DefaultListModel<>();
+        for (Object o : getMaterias(carrera)) m.addElement((Materias) o);
+        return m;
+    }
+
+    private ArrayList<Asignaturas> getAsignaturas(Materias materia) {
+        ListaObjetos lista = new ListaObjetos();
+        for (String[] fila : datos) {
+            if (fila.length <= COL_MATERIA) continue;
+            if (!fila[COL_CARRERA].trim().equals(materia.getCarrera())) continue;
+            if (!fila[COL_MATERIA].trim().equals(materia.getMateria())) continue;
+            lista.Insertar(new Asignaturas(
+                    fila[COL_CARRERA].trim(), fila[COL_MATERIA].trim(),
+                    fila[COL_PROFESOR].trim(), fila[COL_GRUPO].trim()));
+        }
+        return lista.getLista();
+    }
+
+    public DefaultListModel<Asignaturas> getModeloAsignaturas(Materias materia) {
+        DefaultListModel<Asignaturas> m = new DefaultListModel<>();
+        for (Object o : getAsignaturas(materia)) m.addElement((Asignaturas) o);
+        return m;
+    }
+    public DefaultTableModel getTablaCarrera(Carreras carrera) {
+        return filtrar(carrera.getCarrera(), COL_CARRERA, COLUMNAS);
+    }
+
+    public DefaultTableModel getTablaMateria(Materias materia) {
+        DefaultTableModel modelo = new DefaultTableModel(COLUMNAS, 0);
+        for (String[] fila : datos) {
+            if (fila.length < COLUMNAS.length) continue;
+            if (fila[COL_CARRERA].trim().equals(materia.getCarrera())
+                    && fila[COL_MATERIA].trim().equals(materia.getMateria())) {
+                modelo.addRow(padRow(fila));
+            }
+        }
+        return modelo;
+    }
+
+    public DefaultTableModel getTablaAsignatura(Asignaturas asig) {
+        DefaultTableModel modelo = new DefaultTableModel(COLUMNAS, 0);
+        for (String[] fila : datos) {
+            if (fila.length < COL_MATERIA + 1) continue;
+            if (fila[COL_CARRERA].trim().equals(asig.getCarrera())
+                    && fila[COL_MATERIA].trim().equals(asig.getMateria())
+                    && fila[COL_GRUPO].trim().equals(asig.getGrupo().trim())
+                    && fila[COL_PROFESOR].trim().equals(asig.getProfesor())) {
+                modelo.addRow(padRow(fila));
+            }
+        }
+        return modelo;
+    }
+    public DefaultTableModel getTablaTodos() {
+        DefaultTableModel modelo = new DefaultTableModel(COLUMNAS, 0);
+        for (String[] fila : datos) modelo.addRow(padRow(fila));
+        return modelo;
+    }
+    private DefaultTableModel filtrar(String valor, int columna, String[] cols) {
+        DefaultTableModel modelo = new DefaultTableModel(cols, 0);
+        for (String[] fila : datos) {
+            if (fila.length <= columna) continue;
+            if (fila[columna].trim().equals(valor)) modelo.addRow(padRow(fila));
+        }
+        return modelo;
+    }
+
+    private Object[] padRow(String[] fila) {
+        Object[] row = new Object[COLUMNAS.length];
+        for (int i = 0; i < COLUMNAS.length; i++)
+            row[i] = (i < fila.length) ? fila[i].trim() : "";
+        return row;
+    }
+
+    public String[] getColumnas() { return COLUMNAS; }
+    public ArrayList<String[]> getDatos() { return datos; }
+}
