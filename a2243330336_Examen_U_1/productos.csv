@@ -1,0 +1,12 @@
+codigo;nombre;precio;cantidad;categoria
+001;Arroz 1kg;35.0;10;Granos
+002;Azucar 1kg;25.0;10;Granos
+003;Harina 1kg;28.0;8;Granos
+004;Aceite 1L;50.0;1;Liquidos
+006;Huevos 12 piezas;45.0;10;Lacteos
+007;Fideos 500g;20.0;9;Granos
+008;Sal 1kg;15.0;10;Condimentos
+009;Pasta de tomate 400g;25.0;10;Enlatados
+010;Atun lata 170g;35.0;10;Enlatados
+011;Lata de chicharos;15.0;21;Enlatados
+012;leche 1L;29.0;21;Lacteos
