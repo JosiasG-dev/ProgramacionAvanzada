@@ -1,0 +1,2 @@
+1,2024-01-01,0.0,2,Rosalia,46.0,Activo
+2,2024-01-02,5.0,1,David,12.0,Activo5,2024-01-01,0.0,3,ClienteNuevo,20.0,Activo
