@@ -1,0 +1,77 @@
+{
+  "evaluaciones": [
+    {
+      "id": "PROFESIONYVALORES_PEREZCOBOSJULISA_I",
+      "asignatura": "PROFESION Y VALORES",
+      "profesor": "PEREZ COBOS JULISA",
+      "grupo": "I",
+      "datosInstrumento": {
+        "fecha": "",
+        "actividad": "",
+        "observaciones": "",
+        "check_0": false,
+        "etiqueta_0": "El alumno domina los conceptos básicos de la asignatura.",
+        "check_1": false,
+        "etiqueta_1": "El alumno participa activamente en clase.",
+        "check_2": false,
+        "etiqueta_2": "El alumno presenta las evidencias a tiempo.",
+        "check_3": false,
+        "etiqueta_3": "El portafolio de evidencias está completo.",
+        "check_4": false,
+        "etiqueta_4": "El alumno demuestra habilidad para resolver problemas.",
+        "check_5": false,
+        "etiqueta_5": "El alumno trabaja eficientemente en equipo."
+      },
+      "equipos": []
+    },
+    {
+      "id": "PROGRAMACIONAVANZADA_ALVAREZNAVARROEDUARDO_G",
+      "asignatura": "PROGRAMACION AVANZADA",
+      "profesor": "ALVAREZ NAVARRO EDUARDO",
+      "grupo": "G",
+      "datosInstrumento": {
+        "fecha": "2020-05-09",
+        "actividad": "Producto_Integrador",
+        "observaciones": "",
+        "check_0": true,
+        "etiqueta_0": "El alumno domina los conceptos básicos de la asignatura.",
+        "check_1": true,
+        "etiqueta_1": "El alumno participa activamente en clase.",
+        "check_2": false,
+        "etiqueta_2": "El alumno presenta las evidencias a tiempo.",
+        "check_3": true,
+        "etiqueta_3": "El portafolio de evidencias está completo.",
+        "check_4": false,
+        "etiqueta_4": "El alumno demuestra habilidad para resolver problemas.",
+        "check_5": true,
+        "etiqueta_5": "El alumno trabaja eficientemente en equipo."
+      },
+      "equipos": [
+        {
+          "nombres": [
+            "[2173223044] - ALEJO ROCHER ULISES ALFREDO"
+          ],
+          "calificacionRubrica": 6.5
+        },
+        {
+          "nombres": [
+            "[2233336112] - ARIAS CASTILLO RAUL ARAM"
+          ],
+          "calificacionRubrica": 6.5
+        },
+        {
+          "nombres": [
+            "[2233336113] - ATANASIO GOMEZ EDSON FELIPE"
+          ],
+          "calificacionRubrica": 7.5
+        },
+        {
+          "nombres": [
+            "[2213350200] - BAEZ LOPEZ JOSE GUADALUPE"
+          ],
+          "calificacionRubrica": 7.5
+        }
+      ]
+    }
+  ]
+}
