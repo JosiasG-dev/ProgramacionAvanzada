@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuracion>
+
+    <motor_activo>sqlserver</motor_activo>
+
+    <db_perfil id="sqlserver">
+        <host>localhost</host>
+        <puerto>1433</puerto>
+        <nombre_bd>PAventa</nombre_bd>
+        <usuario>PAproyecto</usuario>
+        <password>SqlPass2022!</password>
+    </db_perfil>
+
+    <db_perfil id="mysql">
+        <host>localhost</host>
+        <puerto>3306</puerto>
+        <nombre_bd>mi_base</nombre_bd>
+        <usuario>root</usuario>
+        <password>tu_password</password>
+    </db_perfil>
+
+</configuracion>
